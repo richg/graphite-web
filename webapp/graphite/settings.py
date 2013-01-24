@@ -23,7 +23,7 @@ except ImportError:
   rrdtool = False
 
 GRAPHITE_WEB_APP_SETTINGS_LOADED = False
-WEBAPP_VERSION = '0.9.10'
+WEBAPP_VERSION = '0.9.10-warden'
 DEBUG = False
 JAVASCRIPT_DEBUG = False
 
