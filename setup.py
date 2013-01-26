@@ -32,6 +32,18 @@ for root, dirs, files in os.walk('webapp/content'):
 conf_files = [ ('conf', glob('conf/*.example')) ]
 examples = [ ('examples', glob('examples/example-*')) ]
 
+requirements=["whisper==0.9.10",
+              "pycairo>=1.8.10",
+              "Django>=1.3", 
+              "django-tagging>=0.3.1"]
+
+# Check if the json is present in the current python standard library
+try:
+  import json
+except ImportError:
+  # python version < 2.6. simplejson is required.
+  requirements.append('simplejson>=2.1.6')
+
 setup(
   name='graphite-web',
   version='0.9.10-warden',
@@ -60,6 +72,7 @@ setup(
   package_data={'graphite' :
     ['templates/*', 'local_settings.py.example']},
   scripts=glob('bin/*'),
+  install_requires=requirements,
   data_files=webapp_content.items() + storage_dirs + conf_files + examples,
   **setup_kwargs
 )
