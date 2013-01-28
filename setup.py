@@ -32,7 +32,7 @@ for root, dirs, files in os.walk('webapp/content'):
 conf_files = [ ('conf', glob('conf/*.example')) ]
 examples = [ ('examples', glob('examples/example-*')) ]
 
-requirements=["whisper==0.9.10",
+requirements=["whisper==0.9.10-dev",
               "pycairo==1.8.10",
               "Django>=1.3", 
               "django-tagging>=0.3.1"]
@@ -73,7 +73,10 @@ setup(
     ['templates/*', 'local_settings.py.example']},
   scripts=glob('bin/*'),
   install_requires=requirements,
-  dependency_links = ['http://cairographics.org/releases/py2cairo-1.8.10.tar.gz#egg=pycairo-1.8.10'],
+  dependency_links = [
+      'http://cairographics.org/releases/py2cairo-1.8.10.tar.gz#egg=pycairo-1.8.10',
+      'http://github.com/graphite-project/whisper/tarball/0.9.x#egg=whisper-0.9.10-dev',
+  ],
   data_files=webapp_content.items() + storage_dirs + conf_files + examples,
   **setup_kwargs
 )
